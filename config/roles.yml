@@ -29,7 +29,7 @@ admin:
     - manage_webhooks
     - manage_roles
 owner:
-  name: Owner
+  name: Mistress
   position: 1000
   permissions:
     - administrator
