@@ -19,6 +19,14 @@ class Api::V1::FollowRequestsController < Api::BaseController
 
   def reject
     RejectFollowService.new.call(account, current_account)
+
+    new_note = AccountNote.find_by(account: current_account, target_account: account)
+    if new_note.nil?
+      AccountNote.create!(account: current_account, target_account: account, comment: "Request rejected on #{DateTime.now.strftime('%d/%m/%Y %H:%M')}")
+    else
+      new_note.update!(comment: ["Request rejected on #{DateTime.now.strftime('%d/%m/%Y %H:%M')}", new_note.comment].join("\n"))
+    end
+
     render json: account, serializer: REST::RelationshipSerializer, relationships: relationships
   end
 
