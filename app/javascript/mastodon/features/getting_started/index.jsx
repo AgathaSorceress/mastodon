@@ -65,16 +65,6 @@ const mapDispatchToProps = dispatch => ({
   fetchFollowRequests: () => dispatch(fetchFollowRequests()),
 });
 
-const badgeDisplay = (number, limit) => {
-  if (number === 0) {
-    return undefined;
-  } else if (limit && number >= limit) {
-    return `${limit}+`;
-  } else {
-    return number;
-  }
-};
-
 class GettingStarted extends ImmutablePureComponent {
 
   static contextTypes = {
@@ -133,7 +123,7 @@ class GettingStarted extends ImmutablePureComponent {
       );
 
       if (myAccount.get('locked') || unreadFollowRequests > 0) {
-        navItems.push(<ColumnLink key='follow_requests' icon='user-plus' iconComponent={PersonAddIcon} text={intl.formatMessage(messages.follow_requests)} badge={badgeDisplay(unreadFollowRequests, 40)} to='/follow_requests' />);
+        navItems.push(<ColumnLink key='follow_requests' icon='user-plus' iconComponent={PersonAddIcon} text={intl.formatMessage(messages.follow_requests)} badge={badgeDisplay(unreadFollowRequests)} to='/follow_requests' />);
       }
 
       navItems.push(

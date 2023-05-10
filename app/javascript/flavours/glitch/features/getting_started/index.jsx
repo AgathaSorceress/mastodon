@@ -157,7 +157,7 @@ class GettingStarted extends ImmutablePureComponent {
       }
 
       if (myAccount.get('locked') || unreadFollowRequests > 0) {
-        navItems.push(<ColumnLink key='follow_requests' icon='user-plus' text={intl.formatMessage(messages.follow_requests)} badge={badgeDisplay(unreadFollowRequests, 40)} to='/follow_requests' />);
+        navItems.push(<ColumnLink key='follow_requests' icon='user-plus' text={intl.formatMessage(messages.follow_requests)} badge={badgeDisplay(unreadFollowRequests)} to='/follow_requests' />);
       }
 
       navItems.push(<ColumnLink key='getting_started' icon='ellipsis-h' text={intl.formatMessage(messages.misc)} to='/getting-started-misc' />);
