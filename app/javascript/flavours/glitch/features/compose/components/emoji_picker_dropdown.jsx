@@ -390,8 +390,8 @@ class EmojiPickerDropdown extends PureComponent {
         <div ref={this.setTargetRef} className='emoji-button' title={title} aria-label={title} aria-expanded={active} role='button' onClick={this.onToggle} onKeyDown={this.onToggle} tabIndex={0}>
           {button || <img
             className={classNames('emojione', { 'pulse-loading': active && loading })}
-            alt='🙂'
-            src={`${assetHost}/emoji/1f642.svg`}
+            alt='animated emoji of Madeline from celeste vibing'
+            src={`https://ftp.technogothic.net/vibeline.gif`}
           />}
         </div>
 
