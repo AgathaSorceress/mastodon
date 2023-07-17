@@ -5,6 +5,11 @@ $ui-primary-color: #E6E6FA;
 $ui-secondary-color: #DBD3FF;
 $ui-highlight-color: #A288BD;
 
+// eugen why
+$blurple-600: $ui-highlight-color;
+$blurple-500: darken($ui-highlight-color, 2%);
+$blurple-300: $ui-base-lighter-color;
+
 @import 'flavours/glitch/styles/index';
 
 // Columns width
