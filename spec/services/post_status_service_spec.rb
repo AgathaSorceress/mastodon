@@ -54,6 +54,16 @@ RSpec.describe PostStatusService, type: :service do
     it 'does not change statuses count' do
       expect { subject.call(account, text: 'Hi future!', scheduled_at: future, thread: previous_status) }.to_not(change { [account.statuses_count, previous_status.replies_count] })
     end
+
+    context 'when scheduled_at is less than min offset' do
+      let(:invalid_scheduled_time) { 4.minutes.from_now }
+
+      it 'raises invalid record error' do
+        expect do
+          subject.call(account, text: 'Hi future!', scheduled_at: invalid_scheduled_time)
+        end.to raise_error(ActiveRecord::RecordInvalid)
+      end
+    end
   end
 
   it 'creates response to the original status of boost' do
